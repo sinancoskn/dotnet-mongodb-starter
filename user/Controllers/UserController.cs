@@ -26,35 +26,35 @@ namespace user.Controllers
         [HttpGet("{id:length(24)}", Name = "GetBook")]
         public ActionResult<User> Get(string id)
         {
-            var book = _userService.Get(id);
+            var user = _userService.Get(id);
 
-            if (book == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return book;
+            return user;
         }
 
         [HttpPost]
-        public ActionResult<User> Create(User book)
+        public ActionResult<User> Create(User user)
         {
-            _userService.Create(book);
+            _userService.Create(user);
 
-            return CreatedAtRoute("GetBook", new { id = book.Id.ToString() }, book);
+            return CreatedAtRoute("GetBook", new { id = user.Id.ToString() }, user);
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, User bookIn)
+        public IActionResult Update(string id, User userIn)
         {
-            var book = _userService.Get(id);
+            var user = _userService.Get(id);
 
-            if (book == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _userService.Update(id, bookIn);
+            _userService.Update(id, userIn);
 
             return NoContent();
         }
@@ -62,14 +62,14 @@ namespace user.Controllers
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var book = _userService.Get(id);
+            var user = _userService.Get(id);
 
-            if (book == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _userService.Remove(book.Id);
+            _userService.Remove(user.Id);
 
             return NoContent();
         }

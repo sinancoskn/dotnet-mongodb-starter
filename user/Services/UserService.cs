@@ -1,8 +1,6 @@
 ﻿using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using user.Models;
 
 namespace user.Services
@@ -31,11 +29,11 @@ namespace user.Services
             return user;
         }
 
-        public void Update(string id, User bookIn) =>
-            _user.ReplaceOne(user => user.Id == id, bookIn);
+        public void Update(string id, User user) =>
+            _user.ReplaceOne(user => user.Id == id, user);
 
-        public void Remove(User bookIn) =>
-            _user.DeleteOne(user => user.Id == bookIn.Id);
+        public void Remove(User user) =>
+            _user.DeleteOne(user => user.Id == user.Id);
 
         public void Remove(string id) =>
             _user.DeleteOne(user => user.Id == id);
